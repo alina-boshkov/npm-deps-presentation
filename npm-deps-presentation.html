@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Dependency Management: An Interactive Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Dark Slate -->
+    <!-- Application Structure Plan: The application maintains a linear, slide-based presentation format, designed for a formal talk. The key structural change is the addition of a 'speaker notes' feature. Each slide now contains a dedicated, toggleable section for speaker notes, transforming the app into a tool for both viewing and delivering the presentation. The dark mode styling provides a clean, modern aesthetic suitable for a focused presentation environment. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: How npm Works (Tree, Hoisting). Goal: Explain/Organize. Viz/Method: Interactive diagrams using styled HTML divs. Interaction: Click to expand/collapse nodes, toggle states. Justification: Makes abstract concepts visual and interactive. Library/Method: Vanilla JS + Tailwind.
+        - Report Info: Historical Incidents. Goal: Inform/Compare. Viz/Method: Each incident is a separate slide. Interaction: User-driven navigation with next/previous buttons. Justification: Organizes complex narratives cleanly, allowing for focused reading and easy comparison. Library/Method: Vanilla JS + Tailwind.
+        - Report Info: Best Practices. Goal: Inform/Organ: A list of actionable items on a single slide. Interaction: None, as this is a summary slide. Justification: Presents actionable advice in a final, scannable format. Library/Method: Vanilla JS + Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #e2e8f0; /* slate-200 */
+            min-height: 100vh;
+        }
+        .slide {
+            display: none;
+            min-height: 100vh;
+            width: 100%;
+        }
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .dep-node {
+            cursor: pointer;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .dep-node::before, .dep-node::after {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            border-color: #475569; /* slate-600 */
+        }
+        .dep-node::before {
+            border-top: 1px solid;
+            top: 1rem;
+            width: 1rem;
+            height: 0;
+        }
+        .dep-node:not(:last-child)::after {
+            border-left: 1px solid;
+            height: 100%;
+            top: 0;
+            width: 0px;
+        }
+        .dep-node .toggle {
+            position: absolute;
+            left: 1.25rem;
+            top: 0.6rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            line-height: 0.75rem;
+            text-align: center;
+            background: #334155;
+            border-radius: 99px;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: #0ea5e9;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Slides Container -->
+    <div class="slides-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Welcome Slide -->
+        <div id="slide-0" class="slide active flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Beyond the Basics</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The Hidden Costs of Open Source</p>
+            <div class="mt-8 max-w-3xl mx-auto text-xl text-slate-300 space-y-6">
+                <p>We all love and rely on the open-source ecosystem, but how much do we really understand about the risks and complexities that come with it?</p>
+                <p>This guide goes beyond a simple `npm install` to explore the mechanics, historical incidents, and best practices that shape modern, resilient software development. Let's dive in.</p>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(0)">Show Speaker Notes</button>
+            <div id="notes-0" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- How It Works Slide 1: Dependency Tree -->
+        <div id="slide-1" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">The Engine Room</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Dependency Tree</p>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">Npm builds a recursive graph of all packages and their sub-dependencies. Click the nodes below to see how it works.</p>
+            <div class="mt-8 p-4 bg-slate-800 rounded-lg font-mono text-sm">
+                <div class="dep-node">
+                    <span class="font-semibold text-white">your-project</span>
+                    <div class="pl-4 border-l border-slate-600">
+                        <div class="dep-node" onclick="toggleChildren(this)">
+                            <span class="toggle">-</span>
+                            <span class="font-semibold text-indigo-400">react-router@6.0</span>
+                            <div class="children pl-4 border-l border-slate-600">
+                                <div class="dep-node"><span>react@18.0</span></div>
+                            </div>
+                        </div>
+                        <div class="dep-node" onclick="toggleChildren(this)">
+                            <span class="toggle">+</span>
+                            <span class="font-semibold text-indigo-400">tailwindcss@3.0</span>
+                             <div class="children pl-4 border-l border-slate-600 hidden">
+                                <div class="dep-node"><span>postcss@8.0</span></div>
+                            </div>
+                        </div>
+                        <div class="dep-node">
+                            <span class="font-semibold text-indigo-400">react@18.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(1)">Show Speaker Notes</button>
+            <div id="notes-1" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- How It Works Slide 2: Hoisting -->
+        <div id="slide-2" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">The Engine Room</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Hoisting & Version Conflicts</p>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">To save space, npm "hoists" common dependencies to the top level. But if versions conflict, it must nest them.</p>
+            <div class="mt-8 p-4 bg-slate-800 rounded-lg font-mono text-sm max-w-lg w-full">
+                <p class="font-bold text-white mb-2">Resulting `node_modules`:</p>
+                <div class="pl-4 border-l border-slate-600">
+                    <div class="dep-node"><span>react@18.0 (Hoisted)</span></div>
+                    <div class="dep-node"><span>react-router@6.0</span></div>
+                    <div class="dep-node"><span>tailwindcss@3.0</span></div>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(2)">Show Speaker Notes</button>
+            <div id="notes-2" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+        
+        <!-- How It Works Slide 3: package-lock.json -->
+        <div id="slide-3" class="slide flex-col items-center justify-center text-center">
+             <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">The Engine Room</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The Blueprint: `package-lock.json`</p>
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-400">This file is a precise, reproducible map of the entire dependency tree, ensuring consistent builds for everyone on the team.</p>
+            <div class="mt-8 p-4 bg-slate-700 text-slate-300 rounded-lg font-mono text-sm max-w-xl w-full overflow-x-auto text-left">
+                <pre><code>{
+  "name": "your-project",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "node_modules/react": {
+      "version": "18.2.0",
+      "resolved": "https://registry.npmjs.org/react/-/react-18.2.0.tgz",
+      "integrity": "sha512-..."
+    },
+    "node_modules/react-dom": {
+      "version": "18.2.0",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz",
+      "integrity": "sha512-..."
+    }
+  }
+}</code></pre>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(3)">Show Speaker Notes</button>
+            <div id="notes-3" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Incidents Slide 1: left-pad -->
+        <div id="slide-4" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `left-pad` Incident (2016)</p>
+            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
+                <h3 class="text-2xl font-bold text-white">The 11-Line Package That Broke the Web</h3>
+                <p class="mt-4 text-slate-300">A simple, 11-line utility for padding strings was unpublished by its author in a dispute. Because thousands of projects used it as a transitive dependency, builds failed globally.</p>
+                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
+                    <p><span class="font-bold">Takeaway:</span> Our systems are only as strong as their most obscure dependency. The fragility of the chain is real.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(4)">Show Speaker Notes</button>
+            <div id="notes-4" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Incidents Slide 2: event-stream -->
+        <div id="slide-5" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `event-stream` Attack (2018)</p>
+            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
+                <h3 class="text-2xl font-bold text-white">The Malicious Backdoor</h3>
+                <p class="mt-4 text-slate-300">A popular but unmaintained package was taken over by a malicious actor who added a new, backdoored dependency. The code was designed to steal private keys from a specific Bitcoin wallet app.</p>
+                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
+                    <p><span class="font-bold">Takeaway:</span> A sophisticated supply chain attack can go undetected for months. Trust is not permanent.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(5)">Show Speaker Notes</button>
+            <div id="notes-5" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Incidents Slide 3: stylus -->
+        <div id="slide-6" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `stylus` Incident (2025)</p>
+            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
+                <h3 class="text-2xl font-bold text-white">When Innocence Is Not Enough</h3>
+                <p class="mt-4 text-slate-300">The `stylus` preprocessor was removed by npm's security team, not because it was malicious, but because a contributor was linked to other malicious packages. This broke builds for major frameworks like Angular and Vue.</p>
+                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
+                    <p><span class="font-bold">Takeaway:</span> A package can be removed due to association, not just its own code, adding a new dimension to supply chain risk.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(6)">Show Speaker Notes</button>
+            <div id="notes-6" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Best Practices Slide -->
+        <div id="slide-7" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Building Resilience</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Securing Our Ecosystem</p>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">We can't eliminate all risk, but we can adopt practices that make our projects more secure and stable.</p>
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl">
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Run `npm audit`</h3>
+                    <p class="mt-2 text-slate-300">Regularly run this command to check for known security vulnerabilities.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Lockfiles are Non-Negotiable</h3>
+                    <p class="mt-2 text-slate-300">Commit `package-lock.json` to ensure reproducible builds.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Perform Dependency Audits</h3>
+                    <p class="mt-2 text-slate-300">Use tools like `npm-check-updates` to stay aware of what's in your project.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Mind Your Binaries</h3>
+                    <p class="mt-2 text-slate-300">Be aware that `postinstall` scripts can run arbitrary code on your machine.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Use Private Registries</h3>
+                    <p class="mt-2 text-slate-300">Insulate from public registry outages with a private registry or caching service.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(7)">Show Speaker Notes</button>
+            <div id="notes-7" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="fixed bottom-0 left-0 right-0 flex items-center justify-between p-4 bg-slate-900/80 backdrop-blur-lg border-t border-slate-700">
+        <button id="prev-btn" onclick="prevSlide()" class="px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed">← Previous</button>
+        <span id="slide-counter" class="text-sm font-medium text-slate-400">1 of 8</span>
+        <button id="next-btn" onclick="nextSlide()" class="px-4 py-2 text-sm font-medium text-sky-400 rounded-lg bg-sky-900/30 hover:bg-sky-900/50">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideCounter = document.getElementById('slide-counter');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        const speakerNotes = [
+            `**Speaker Notes: Welcome**
+Hello everyone! I'm here to talk about something crucial to our work: dependency management. We often take it for granted, but a deeper understanding is key to building more resilient software. This presentation will cover the fundamentals, some famous incidents, and actionable best practices we can implement as a team.`,
+            `**Speaker Notes: Dependency Tree**
+When you run \`npm install\`, npm resolves the dependencies listed in our \`package.json\`. It recursively finds every package, creating a large tree. The visual diagram here shows how a single project can pull in multiple dependencies, which in turn have their own dependencies. This complex network is what makes our ecosystem so powerful, but also fragile.`,
+            `**Speaker Notes: Hoisting & Version Conflicts**
+To optimize for space, npm tries to hoist common packages to the top-level \`node_modules\` folder. This is an important detail for understanding why our project folders look the way they do. However, if two dependencies need different major versions of the same package, npm must nest one of them deeper in the tree, which can lead to complex and sometimes unexpected behavior.`,
+            `**Speaker Notes: package-lock.json**
+The \`package-lock.json\` file is the most important part of this process. It is a precise blueprint of the entire dependency tree as it was installed. It records the exact version, source URL, and a cryptographic integrity hash for every single package. This guarantees that our builds are reproducible across different machines and environments. **Never forget to commit this file.**`,
+            `**Speaker Notes: left-pad Incident**
+The \`left-pad\` incident in 2016 is a classic example of our open-source reliance. A developer unpublished a small, 11-line utility package. Because it was a transitive dependency for many major frameworks, thousands of builds worldwide broke. This highlights how a single point of failure can have a massive, global impact.`,
+            `**Speaker Notes: event-stream Attack**
+The \`event-stream\` attack in 2018 showed a more sinister side of dependency management. A popular package was taken over by a malicious actor who injected a backdoor. The code was highly targeted and designed to steal private keys from a specific Bitcoin wallet. This was a sophisticated supply chain attack that went undetected for months.`,
+            `**Speaker Notes: stylus Incident**
+The recent \`stylus\` incident from 2025 provides a new lesson. The CSS preprocessor was removed by npm not because it was malicious, but because a contributor was linked to other malicious packages. This emphasizes that a package's stability can be tied to the reputation of its maintainers, adding another layer of risk to our dependency chains.`,
+            `**Speaker Notes: Best Practices**
+To build resilience, we must be proactive. Regularly running \`npm audit\` is a must. Always commit your lockfile. Use tools to audit and understand your dependencies. Be mindful of \`postinstall\` scripts, which can run arbitrary code. Finally, for critical applications, consider using a private registry to insulate from public registry incidents.`
+        ];
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            updateNavigation(index);
+        }
+
+        function updateNavigation(index) {
+            slideCounter.textContent = `${index + 1} of ${slides.length}`;
+            prevBtn.disabled = index === 0;
+            
+            const isLastSlide = index === slides.length - 1;
+            nextBtn.disabled = isLastSlide;
+            nextBtn.style.display = isLastSlide ? 'none' : 'inline-block';
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+        
+        function toggleChildren(element) {
+            const children = element.querySelector('.children');
+            const toggle = element.querySelector('.toggle');
+            if (children) {
+                const isHidden = children.classList.toggle('hidden');
+                toggle.textContent = isHidden ? '+' : '-';
+            }
+        }
+
+        function toggleNotes(index) {
+            const notesDiv = document.getElementById(`notes-${index}`);
+            const button = slides[index].querySelector('button[onclick^="toggleNotes"]');
+            
+            if (notesDiv.classList.contains('hidden')) {
+                notesDiv.innerHTML = speakerNotes[index];
+                notesDiv.classList.remove('hidden');
+                button.textContent = 'Hide Speaker Notes';
+            } else {
+                notesDiv.classList.add('hidden');
+                button.textContent = 'Show Speaker Notes';
+            }
+        }
+
+        showSlide(currentSlide);
+    </script>
+
+</body>
+</html>
