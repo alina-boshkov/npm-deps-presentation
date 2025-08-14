@@ -179,8 +179,84 @@
             <div id="notes-3" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
         </div>
 
-        <!-- Current Status Slide -->
+        <!-- Incidents Slide 1: left-pad -->
         <div id="slide-4" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `left-pad` Incident (2016)</p>
+            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
+                <h3 class="text-2xl font-bold text-white">The 11-Line Package That Broke the Web</h3>
+                <p class="mt-4 text-slate-300">The author unpublished the package in a dispute with npm over a package name. Because thousands of projects used it as a transitive dependency, builds failed globally.</p>
+                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
+                    <p><span class="font-bold">Takeaway:</span> Our systems are only as strong as their most obscure dependency. The fragility of the chain is real.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(4)">Show Speaker Notes</button>
+            <div id="notes-4" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Incidents Slide 2: event-stream -->
+        <div id="slide-5" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `event-stream` Attack (2018)</p>
+            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
+                <h3 class="text-2xl font-bold text-white">The Malicious Backdoor</h3>
+                <p class="mt-4 text-slate-300">A popular but unmaintained package was taken over by a malicious actor who added a new, backdoored dependency. The code was designed to steal private keys from a specific Bitcoin wallet app.</p>
+                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
+                    <p><span class="font-bold">Takeaway:</span> A sophisticated supply chain attack can go undetected for months. Trust is not permanent.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(5)">Show Speaker Notes</button>
+            <div id="notes-5" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Incidents Slide 3: stylus -->
+        <div id="slide-6" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `stylus` Incident (2025)</p>
+            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
+                <h3 class="text-2xl font-bold text-white">When Innocence Is Not Enough</h3>
+                <p class="mt-4 text-slate-300">The `stylus` preprocessor was removed by npm's security team, not because it was malicious, but because a contributor was linked to other malicious packages. This broke builds for major frameworks like Angular and Vue.</p>
+                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
+                    <p><span class="font-bold">Takeaway:</span> A package can be removed due to association, not just its own code, adding a new dimension to supply chain risk.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(6)">Show Speaker Notes</button>
+            <div id="notes-6" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Best Practices Slide -->
+        <div id="slide-7" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Building Resilience</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Securing Our Ecosystem</p>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">We can't eliminate all risk, but we can adopt practices that make our projects more secure and stable.</p>
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl">
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Run `npm audit`</h3>
+                    <p class="mt-2 text-slate-300">Regularly run this command to check for known security vulnerabilities.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Lockfiles are Non-Negotiable</h3>
+                    <p class="mt-2 text-slate-300">Commit `package-lock.json` to ensure reproducible builds.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Perform Dependency Audits</h3>
+                    <p class="mt-2 text-slate-300">Use tools like `npm-check-updates` to stay aware of what's in your project.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Mind Your Binaries</h3>
+                    <p class="mt-2 text-slate-300">Be aware that `postinstall` scripts can run arbitrary code on your machine.</p>
+                </div>
+                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-lg font-bold text-white">Use Private Registries</h3>
+                    <p class="mt-2 text-slate-300">Insulate from public registry outages with a private registry or caching service.</p>
+                </div>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(7)">Show Speaker Notes</button>
+            <div id="notes-7" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Current Status Slide -->
+        <div id="slide-8" class="slide flex-col items-center justify-center text-center">
             <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Project Health</h2>
             <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Current Status: Major Upgrades Needed</p>
             <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-400">Here's a look at the current dependency status of our project, highlighting major version upgrades that require our attention. These may contain breaking changes and need careful review.</p>
@@ -353,82 +429,6 @@
 - wait-on: ^8.0.1 → ^8.0.4
 </pre>
             </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(4)">Show Speaker Notes</button>
-            <div id="notes-4" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
-        </div>
-
-        <!-- Incidents Slide 1: left-pad -->
-        <div id="slide-5" class="slide flex-col items-center justify-center text-center">
-            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
-            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `left-pad` Incident (2016)</p>
-            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
-                <h3 class="text-2xl font-bold text-white">The 11-Line Package That Broke the Web</h3>
-                <p class="mt-4 text-slate-300">The author unpublished the package in a dispute with npm over a package name. Because thousands of projects used it as a transitive dependency, builds failed globally.</p>
-                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
-                    <p><span class="font-bold">Takeaway:</span> Our systems are only as strong as their most obscure dependency. The fragility of the chain is real.</p>
-                </div>
-            </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(5)">Show Speaker Notes</button>
-            <div id="notes-5" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
-        </div>
-
-        <!-- Incidents Slide 2: event-stream -->
-        <div id="slide-6" class="slide flex-col items-center justify-center text-center">
-            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
-            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `event-stream` Attack (2018)</p>
-            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
-                <h3 class="text-2xl font-bold text-white">The Malicious Backdoor</h3>
-                <p class="mt-4 text-slate-300">A popular but unmaintained package was taken over by a malicious actor who added a new, backdoored dependency. The code was designed to steal private keys from a specific Bitcoin wallet app.</p>
-                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
-                    <p><span class="font-bold">Takeaway:</span> A sophisticated supply chain attack can go undetected for months. Trust is not permanent.</p>
-                </div>
-            </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(6)">Show Speaker Notes</button>
-            <div id="notes-6" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
-        </div>
-
-        <!-- Incidents Slide 3: stylus -->
-        <div id="slide-7" class="slide flex-col items-center justify-center text-center">
-            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
-            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `stylus` Incident (2025)</p>
-            <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
-                <h3 class="text-2xl font-bold text-white">When Innocence Is Not Enough</h3>
-                <p class="mt-4 text-slate-300">The `stylus` preprocessor was removed by npm's security team, not because it was malicious, but because a contributor was linked to other malicious packages. This broke builds for major frameworks like Angular and Vue.</p>
-                <div class="mt-6 p-4 bg-red-900/30 text-red-300 rounded-lg">
-                    <p><span class="font-bold">Takeaway:</span> A package can be removed due to association, not just its own code, adding a new dimension to supply chain risk.</p>
-                </div>
-            </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(7)">Show Speaker Notes</button>
-            <div id="notes-7" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
-        </div>
-
-        <!-- Best Practices Slide -->
-        <div id="slide-8" class="slide flex-col items-center justify-center text-center">
-            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Building Resilience</h2>
-            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Securing Our Ecosystem</p>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">We can't eliminate all risk, but we can adopt practices that make our projects more secure and stable.</p>
-            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl">
-                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold text-white">Run `npm audit`</h3>
-                    <p class="mt-2 text-slate-300">Regularly run this command to check for known security vulnerabilities.</p>
-                </div>
-                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold text-white">Lockfiles are Non-Negotiable</h3>
-                    <p class="mt-2 text-slate-300">Commit `package-lock.json` to ensure reproducible builds.</p>
-                </div>
-                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold text-white">Perform Dependency Audits</h3>
-                    <p class="mt-2 text-slate-300">Use tools like `npm-check-updates` to stay aware of what's in your project.</p>
-                </div>
-                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold text-white">Mind Your Binaries</h3>
-                    <p class="mt-2 text-slate-300">Be aware that `postinstall` scripts can run arbitrary code on your machine.</p>
-                </div>
-                <div class="content-card bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold text-white">Use Private Registries</h3>
-                    <p class="mt-2 text-slate-300">Insulate from public registry outages with a private registry or caching service.</p>
-                </div>
-            </div>
             <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(8)">Show Speaker Notes</button>
             <div id="notes-8" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
         </div>
@@ -457,16 +457,16 @@ When you run \`npm install\`, npm resolves the dependencies listed in our \`pack
 To optimize for space, npm tries to hoist common packages to the top-level \`node_modules\` folder. This is an important detail for understanding why our project folders look the way they do. However, if two dependencies need different major versions of the same package, npm must nest one of them deeper in the tree, which can lead to complex and sometimes unexpected behavior.`,
             `**Speaker Notes: package-lock.json**
 The \`package-lock.json\` file is the most important part of this process. It is a precise blueprint of the entire dependency tree as it was installed. It records the exact version, source URL, and a cryptographic integrity hash for every single package. This guarantees that our builds are reproducible across different machines and environments. **Never forget to commit this file.**`,
-            `**Speaker Notes: Current Status**
-This slide provides a concrete example of our current dependency status. This is a list of major version upgrades that need to be addressed. These aren't just minor updates; they represent significant changes that could introduce breaking changes and will require careful testing and a dedicated migration strategy.`,
             `**Speaker Notes: left-pad Incident**
 The \`left-pad\` incident in 2016 is a classic example of our open-source reliance. A developer unpublished a small, 11-line utility package. Because it was a transitive dependency for many major frameworks, thousands of builds worldwide broke. This highlights how a single point of failure can have a massive, global impact.`,
             `**Speaker Notes: event-stream Attack**
 The \`event-stream\` attack in 2018 showed a more sinister side of dependency management. A popular package was taken over by a malicious actor who injected a backdoor. The code was highly targeted and designed to steal private keys from a specific Bitcoin wallet. This was a sophisticated supply chain attack that went undetected for months.`,
             `**Speaker Notes: stylus Incident**
-The recent \`stylus\` incident from 2025 provides a new lesson. The CSS preprocessor was removed by npm not because it was malicious, but because a contributor was linked to other malicious packages. This emphasizes that a package's stability can be tied to the reputation of its maintainers, adding another layer of risk to our dependency chains.`,
+The recent \`stylus\` incident from 2025 provides a new lesson. The CSS preprocessor was removed by npm not because it was malicious, but because a contributor was linked to other malicious packages. This broke builds for major frameworks like Angular and Vue.`,
             `**Speaker Notes: Best Practices**
-To build resilience, we must be proactive. Regularly running \`npm audit\` is a must. Always commit your lockfile. Use tools to audit and understand your dependencies. Be mindful of \`postinstall\` scripts, which can run arbitrary code. Finally, for critical applications, consider using a private registry to insulate from public registry incidents.`
+To build resilience, we must be proactive. Regularly running \`npm audit\` is a must. Always commit your lockfile. Use tools to audit and understand your dependencies. Be mindful of \`postinstall\` scripts, which can run arbitrary code. Finally, for critical applications, consider using a private registry to insulate from public registry incidents.`,
+            `**Speaker Notes: Current Status**
+This slide provides a concrete example of our current dependency status. This is a list of major version upgrades that need to be addressed. These aren't just minor updates; they represent significant changes that could introduce breaking changes and will require careful testing and a dedicated migration strategy.`
         ];
 
         function showSlide(index) {
