@@ -179,8 +179,186 @@
             <div id="notes-3" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
         </div>
 
-        <!-- Incidents Slide 1: left-pad -->
+        <!-- Current Status Slide -->
         <div id="slide-4" class="slide flex-col items-center justify-center text-center">
+            <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Project Health</h2>
+            <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Current Status: Major Upgrades Needed</p>
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-400">Here's a look at the current dependency status of our project, highlighting major version upgrades that require our attention. These may contain breaking changes and need careful review.</p>
+            <div class="mt-8 overflow-y-auto max-h-96 w-full max-w-4xl p-6 bg-slate-800 rounded-xl text-left text-sm font-mono text-slate-300 border border-slate-700">
+                <pre>
+- @babel/preset-react: ^7.14.5 → ^7.27.1
+- @builder.io/partytown: ^0.8.1 → ^0.10.3
+- @currents/playwright: ^1.8.0 → ^1.15.3
+- @cypress/grep: ^4.0.1 → ^4.1.1
+- @datadog/browser-rum: ^6.7.0 → ^6.18.0
+- @datadog/browser-rum-react: ^6.7.0 → ^6.18.0
+- @easyops-cn/docusaurus-search-local: ^0.50.0 → ^0.52.1
+- @froxz/vite-plugin-s3: ^1.5.0 → ^2.0.5
+- @headlessui/react: ^2.2.0 → ^2.2.7
+- @jscutlery/semver: ^5.2.2 → ^5.7.1
+- @lemonade-hq/cantina-aws: ^16.1.4 → ^16.12.0
+- @lemonade-hq/cantina-cli: ^16.1.4 → ^16.12.0
+- @lemonade-hq/cantina-core: ^16.1.4 → ^16.12.0
+- @lemonade-hq/cantina-db: ^16.1.4 → ^16.12.0
+- @lemonade-hq/cantina-edge: ^16.1.4 → ^16.12.0
+- @lemonade-hq/cantina-i18n: ^16.1.4 → ^16.12.0
+- @lemonade-hq/cantina-nodejs: ^16.1.4 → ^16.12.0
+- @lemonade-hq/chat-engine: 4.144.1 → 4.146.0
+- @lemonade-hq/chat-engine-server: 4.144.1 → 4.146.0
+- @lemonade-hq/chat-wizard-client-base: 4.144.1 → 4.146.0
+- @lemonade-hq/chat-wizard-common-definitions: 4.144.1 → 4.146.0
+- @lemonade-hq/e2e-core: ^0.12.26 → ^0.64.21
+- @lemonade-hq/eslint-config-base: ^2.2.1 → ^2.10.0
+- @lemonade-hq/eslint-config-frontend: ^2.2.1 → ^2.10.0
+- @lemonade-hq/eslint-plugin-base: ^2.2.1 → ^2.10.0
+- @lemonade-hq/eslint-plugin-frontend: ^2.2.1 → ^2.10.0
+- @lemonade-hq/lemonation: ^1.148.0 → ^1.149.2
+- @lemonade-hq/maschema-schema: 2.13.0 → 2.17.0
+- @lemonade-hq/maschema-schema-secure: 2.13.0 → 2.17.0
+- @lemonade-hq/maschema-utils: 2.13.0 → 2.17.0
+- @lemonade-hq/maschema-validations: 2.13.0 → 2.17.0
+- @lemonade-hq/nuiza: ^5.98.8 → ^5.101.6
+- @lemonade-hq/prettier-config-backend: ^2.2.1 → ^2.10.0
+- @lemonade-hq/prettier-config-base: ^2.2.1 → ^2.10.0
+- @lemonade-hq/prettier-config-frontend: ^2.2.1 → ^2.10.0
+- @lemonade-hq/ts-helpers: ^1.132.0 → ^1.139.1
+- @mdx-js/react: ^3.0.0 → ^3.1.0
+- @nx/cypress: 19.4.0 → 21.3.11
+- @nx/eslint-plugin: 19.4.0 → 21.3.11
+- @nx/js: 19.4.0 → 21.3.11
+- @nx/linter: 19.4.0 → 19.8.4
+- @nx/playwright: ^19.4.0 → ^21.3.11
+- @nx/react: 19.4.0 → 21.3.11
+- @nx/storybook: 19.4.0 → 21.3.11
+- @nx/vite: 19.4.0 → 21.3.11
+- @nx/web: 19.4.0 → 21.3.11
+- @nx/workspace: 19.4.0 → 21.3.11
+- @playwright/test: ^1.49.1 → ^1.54.2
+- @radix-ui/react-accordion: ^1.1.2 → ^1.2.12
+- @radix-ui/react-checkbox: ^1.0.4 → ^1.3.3
+- @radix-ui/react-collapsible: ^1.0.3 → ^1.1.12
+- @radix-ui/react-dialog: ^1.0.5 → ^1.1.15
+- @radix-ui/react-dropdown-menu: ^2.0.6 → ^2.1.16
+- @radix-ui/react-popover: ^1.0.7 → ^1.1.15
+- @radix-ui/react-radio-group: ^1.1.3 → ^1.3.8
+- @radix-ui/react-select: ^2.0.0 → ^2.2.6
+- @radix-ui/react-separator: ^1.0.3 → ^1.1.7
+- @radix-ui/react-slider: ^1.1.2 → ^1.3.6
+- @radix-ui/react-switch: ^1.0.3 → ^1.2.6
+- @radix-ui/react-toast: ^1.1.5 → ^1.2.15
+- @radix-ui/react-tooltip: ^1.0.7 → ^1.2.8
+- @radix-ui/react-visually-hidden: ^1.1.0 → ^1.2.3
+- @rive-app/react-canvas: ^4.18.8 → ^4.23.1
+- @storybook/addon-a11y: ^8.0.2 → ^9.1.2
+- @storybook/addon-coverage: ^1.0.1 → ^2.0.0
+- @storybook/addon-designs: ^8.0.0 → ^10.0.2
+- @storybook/addon-essentials: ^8.0.2 → ^8.6.14
+- @storybook/addon-interactions: ^8.4.6 → ^8.6.14
+- @storybook/blocks: ^8.0.2 → ^8.6.14
+- @storybook/core-common: ^8.0.2 → ^8.6.14
+- @storybook/core-server: ^8.0.2 → ^8.6.14
+- @storybook/manager-api: ^8.0.2 → ^8.6.14
+- @storybook/react: ^8.0.2 → ^9.1.2
+- @storybook/react-vite: ^8.0.2 → ^9.1.2
+- @storybook/test-runner: ^0.17.0 → ^0.23.0
+- @storybook/theming: ^8.0.2 → ^8.6.14
+- @swc-node/register: ^1.6.6 → ^1.10.10
+- @swc/cli: ~0.1.62 → ~0.7.8
+- @swc/core: ~1.4.13 → ~1.13.3
+- @swc/helpers: ~0.5.0 → ~0.5.17
+- @testing-library/cypress: ^10.0.1 → ^10.0.3
+- @testing-library/dom: ^10.4.0 → ^10.4.1
+- @testing-library/jest-dom: ^5.16.5 → ^6.7.0
+- @testing-library/react: ^16.0.1 → ^16.3.0
+- @testing-library/user-event: ^14.4.3 → ^14.6.1
+- @types/applepayjs: ^14.0.8 → ^14.0.9
+- @types/dompurify: ^3.0.5 → ^3.2.0
+- @types/lodash: ^4.17.7 → ^4.17.20
+- @types/matter-js: ^0.19.6 → ^0.20.0
+- @types/node: 18.14.2 → 24.2.1
+- @types/react: 18.3.0 → 19.1.10
+- @types/react-dom: 18.3.0 → 19.1.7
+- @types/spreedly-iframe-browser: ^1.0.3 → ^1.1.0
+- @types/testing-library__jest-dom: ^5.14.8 → ^6.0.0
+- @typescript-eslint/eslint-plugin: 7.16.1 → 8.39.1
+- @typescript-eslint/parser: 7.16.1 → 8.39.1
+- @typescript-eslint/typescript-estree: 7.16.1 → 8.39.1
+- @vanilla-extract/css: ^1.15.3 → ^1.17.4
+- @vanilla-extract/dynamic: ^2.1.1 → ^2.1.5
+- @vanilla-extract/esbuild-plugin: ^2.3.8 → ^2.3.18
+- @vanilla-extract/recipes: ^0.5.3 → ^0.5.7
+- @vanilla-extract/vite-plugin: ^4.0.12 → ^5.1.1
+- @vitejs/plugin-react: ^4.3.1 → ^5.0.0
+- @vitest/browser: 1.6.0 → 3.2.4
+- @vitest/coverage-istanbul: ^1.6.0 → ^3.2.4
+- @vitest/coverage-v8: ^1.6.0 → ^3.2.4
+- @vitest/ui: ^1.6.0 → ^3.2.4
+- @webpro/nx-tsc: ^0.0.1 → ^0.0.2
+- card-validator: ^9.1.0 → ^10.0.3
+- clsx: ^2.0.0 → ^2.1.1
+- commander: ^11.0.0 → ^14.0.0
+- concurrently: ^8.2.1 → ^9.2.0
+- crypto-es: ^2.1.0 → ^3.0.0
+- cspell: ^6.31.1 → ^9.2.0
+- csstype: ^3.1.2 → ^3.1.3
+- cypress: ^13.6.4 → ^14.5.4
+- dompurify: ^3.1.5 → ^3.2.6
+- esbuild: ^0.21.5 → ^0.25.9
+- eslint-config-prettier: 9.1.0 → 10.1.8
+- eslint-plugin-cypress: ^2.15.2 → ^5.1.0
+- eslint-plugin-functional: ^5.0.8 → ^9.0.2
+- eslint-plugin-import: 2.29.1 → 2.32.0
+- eslint-plugin-jest: ^28.6.0 → ^29.0.1
+- eslint-plugin-jsx-a11y: 6.7.1 → 6.10.2
+- eslint-plugin-prettier: ^5.1.3 → ^5.5.4
+- eslint-plugin-react: 7.34.3 → 7.37.5
+- eslint-plugin-react-hooks: 4.6.2 → 5.2.0
+- expect-type: ^0.17.3 → ^1.2.2
+- framer-motion: ^10.17.0 → ^12.23.12
+- hash-wasm: ^4.9.0 → ^4.12.0
+- input-otp: ^1.2.4 → ^1.4.2
+- jsdom: ^24.1.0 → ^26.1.0
+- libphonenumber-js: ^1.11.5 → ^1.12.11
+- match-sorter: ^6.3.1 → ^8.1.0
+- matter-js: ^0.19.0 → ^0.20.0
+- modern-screenshot: ^4.4.39 → ^4.6.5
+- npm: 9.5.1 → 11.5.2
+- nx: 19.4.0 → 21.3.11
+- playwright: ^1.46.0 → ^1.54.2
+- prettier: ^3.0.3 → ^3.6.2
+- prism-react-renderer: ^2.3.0 → ^2.4.1
+- rainbow-sprinkles: ^0.17.2 → ^1.0.0
+- react: 18.3.0 → 19.1.1
+- react-aria: ^3.37.0 → ^3.42.0
+- react-aria-components: ^1.6.0 → ^1.11.0
+- react-dom: 18.3.0 → 19.1.1
+- react-markdown: ^8.0.7 → ^10.1.0
+- react-merge-refs: ^2.1.1 → ^3.0.2
+- react-number-format: ^5.4.3 → ^5.4.4
+- react-plaid-link: ^3.6.0 → ^4.1.1
+- react-router-dom: ^6.8.2 → ^7.8.0
+- react-stately: ^3.35.0 → ^3.40.0
+- regenerator-runtime: ^0.14.0 → ^0.14.1
+- rollup-plugin-visualizer: ^5.14.0 → ^6.0.3
+- sirv: ^2.0.3 → ^3.0.1
+- styled-components: ^6.1.1 → ^6.1.19
+- ts-node: 10.9.1 → 10.9.2
+- tslib: ^2.6.0 → ^2.8.1
+- type-fest: ^4.14.0 → ^4.41.0
+- typescript: ~5.5.2 → ~5.9.2
+- vaul: ^0.9.1 → ^1.1.2
+- vite-plugin-dts: ~3.8.1 → ~4.5.4
+- vite-tsconfig-paths: ^4.3.2 → ^5.1.4
+- vitest: ^1.6.0 → ^3.2.4
+- wait-on: ^8.0.1 → ^8.0.4
+</pre>
+            </div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(4)">Show Speaker Notes</button>
+            <div id="notes-4" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+        </div>
+
+        <!-- Incidents Slide 1: left-pad -->
+        <div id="slide-5" class="slide flex-col items-center justify-center text-center">
             <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
             <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `left-pad` Incident (2016)</p>
             <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
@@ -190,12 +368,12 @@
                     <p><span class="font-bold">Takeaway:</span> Our systems are only as strong as their most obscure dependency. The fragility of the chain is real.</p>
                 </div>
             </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(4)">Show Speaker Notes</button>
-            <div id="notes-4" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(5)">Show Speaker Notes</button>
+            <div id="notes-5" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
         </div>
 
         <!-- Incidents Slide 2: event-stream -->
-        <div id="slide-5" class="slide flex-col items-center justify-center text-center">
+        <div id="slide-6" class="slide flex-col items-center justify-center text-center">
             <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
             <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `event-stream` Attack (2018)</p>
             <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
@@ -205,12 +383,12 @@
                     <p><span class="font-bold">Takeaway:</span> A sophisticated supply chain attack can go undetected for months. Trust is not permanent.</p>
                 </div>
             </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(5)">Show Speaker Notes</button>
-            <div id="notes-5" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(6)">Show Speaker Notes</button>
+            <div id="notes-6" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
         </div>
 
         <!-- Incidents Slide 3: stylus -->
-        <div id="slide-6" class="slide flex-col items-center justify-center text-center">
+        <div id="slide-7" class="slide flex-col items-center justify-center text-center">
             <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Cautionary Tales</h2>
             <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">The `stylus` Incident (2025)</p>
             <div class="mt-8 max-w-3xl mx-auto p-8 bg-slate-800 rounded-xl border border-slate-700 shadow-sm text-left">
@@ -220,12 +398,12 @@
                     <p><span class="font-bold">Takeaway:</span> A package can be removed due to association, not just its own code, adding a new dimension to supply chain risk.</p>
                 </div>
             </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(6)">Show Speaker Notes</button>
-            <div id="notes-6" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(7)">Show Speaker Notes</button>
+            <div id="notes-7" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
         </div>
 
         <!-- Best Practices Slide -->
-        <div id="slide-7" class="slide flex-col items-center justify-center text-center">
+        <div id="slide-8" class="slide flex-col items-center justify-center text-center">
             <h2 class="text-base font-semibold text-sky-400 tracking-wide uppercase">Building Resilience</h2>
             <p class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Securing Our Ecosystem</p>
             <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">We can't eliminate all risk, but we can adopt practices that make our projects more secure and stable.</p>
@@ -251,8 +429,8 @@
                     <p class="mt-2 text-slate-300">Insulate from public registry outages with a private registry or caching service.</p>
                 </div>
             </div>
-            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(7)">Show Speaker Notes</button>
-            <div id="notes-7" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
+            <button class="mt-8 px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-150" onclick="toggleNotes(8)">Show Speaker Notes</button>
+            <div id="notes-8" class="mt-4 max-w-3xl w-full p-4 bg-slate-800 rounded-xl border border-slate-700 text-left text-slate-400 hidden"></div>
         </div>
 
     </div>
@@ -260,7 +438,7 @@
     <!-- Navigation Controls -->
     <div class="fixed bottom-0 left-0 right-0 flex items-center justify-between p-4 bg-slate-900/80 backdrop-blur-lg border-t border-slate-700">
         <button id="prev-btn" onclick="prevSlide()" class="px-4 py-2 text-sm font-medium text-slate-400 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed">← Previous</button>
-        <span id="slide-counter" class="text-sm font-medium text-slate-400">1 of 8</span>
+        <span id="slide-counter" class="text-sm font-medium text-slate-400">1 of 9</span>
         <button id="next-btn" onclick="nextSlide()" class="px-4 py-2 text-sm font-medium text-sky-400 rounded-lg bg-sky-900/30 hover:bg-sky-900/50">Next →</button>
     </div>
 
@@ -273,13 +451,22 @@
 
         const speakerNotes = [
             `Hello everyone! I'm here to talk about something crucial to our work: dependency management. We often take it for granted, but a deeper understanding is key to building more resilient software. This presentation will cover the fundamentals, some famous incidents, and actionable best practices we can implement as a team.`,
-            `When you run \`npm install\`, npm resolves the dependencies listed in our \`package.json\`. It recursively finds every package, creating a large tree. The visual diagram here shows how a single project can pull in multiple dependencies, which in turn have their own dependencies. This complex network is what makes our ecosystem so powerful, but also fragile.`,
-            `To optimize for space, npm tries to hoist common packages to the top-level \`node_modules\` folder. This is an important detail for understanding why our project folders look the way they do. However, if two dependencies need different major versions of the same package, npm must nest one of them deeper in the tree, which can lead to complex and sometimes unexpected behavior.`,
-            `The \`package-lock.json\` file is the most important part of this process. It is a precise blueprint of the entire dependency tree as it was installed. It records the exact version, source URL, and a cryptographic integrity hash for every single package. This guarantees that our builds are reproducible across different machines and environments. **Never forget to commit this file.**`,
-            `The \`left-pad\` incident in 2016 is a classic example of our open-source reliance. A developer unpublished a small, 11-line utility package. Because it was a transitive dependency for many major frameworks, thousands of builds worldwide broke. This highlights how a single point of failure can have a massive, global impact.`,
-            `The \`event-stream\` attack in 2018 showed a more sinister side of dependency management. A popular package was taken over by a malicious actor who injected a backdoor. The code was highly targeted and designed to steal private keys from a specific Bitcoin wallet. This was a sophisticated supply chain attack that went undetected for months.`,
-            `The recent \`stylus\` incident from 2025 provides a new lesson. The CSS preprocessor was removed by npm not because it was malicious, but because a contributor was linked to other malicious packages. This emphasizes that a package's stability can be tied to the reputation of its maintainers, adding another layer of risk to our dependency chains.`,
-            `To build resilience, we must be proactive. Regularly running \`npm audit\` is a must. Always commit your lockfile. Use tools to audit and understand your dependencies. Be mindful of \`postinstall\` scripts, which can run arbitrary code. Finally, for critical applications, consider using a private registry to insulate from public registry incidents.`
+            `**Speaker Notes: Dependency Tree**
+When you run \`npm install\`, npm resolves the dependencies listed in our \`package.json\`. It recursively finds every package, creating a large tree. The visual diagram here shows how a single project can pull in multiple dependencies, which in turn have their own dependencies. This complex network is what makes our ecosystem so powerful, but also fragile.`,
+            `**Speaker Notes: Hoisting & Version Conflicts**
+To optimize for space, npm tries to hoist common packages to the top-level \`node_modules\` folder. This is an important detail for understanding why our project folders look the way they do. However, if two dependencies need different major versions of the same package, npm must nest one of them deeper in the tree, which can lead to complex and sometimes unexpected behavior.`,
+            `**Speaker Notes: package-lock.json**
+The \`package-lock.json\` file is the most important part of this process. It is a precise blueprint of the entire dependency tree as it was installed. It records the exact version, source URL, and a cryptographic integrity hash for every single package. This guarantees that our builds are reproducible across different machines and environments. **Never forget to commit this file.**`,
+            `**Speaker Notes: Current Status**
+This slide provides a concrete example of our current dependency status. This is a list of major version upgrades that need to be addressed. These aren't just minor updates; they represent significant changes that could introduce breaking changes and will require careful testing and a dedicated migration strategy.`,
+            `**Speaker Notes: left-pad Incident**
+The \`left-pad\` incident in 2016 is a classic example of our open-source reliance. A developer unpublished a small, 11-line utility package. Because it was a transitive dependency for many major frameworks, thousands of builds worldwide broke. This highlights how a single point of failure can have a massive, global impact.`,
+            `**Speaker Notes: event-stream Attack**
+The \`event-stream\` attack in 2018 showed a more sinister side of dependency management. A popular package was taken over by a malicious actor who injected a backdoor. The code was highly targeted and designed to steal private keys from a specific Bitcoin wallet. This was a sophisticated supply chain attack that went undetected for months.`,
+            `**Speaker Notes: stylus Incident**
+The recent \`stylus\` incident from 2025 provides a new lesson. The CSS preprocessor was removed by npm not because it was malicious, but because a contributor was linked to other malicious packages. This emphasizes that a package's stability can be tied to the reputation of its maintainers, adding another layer of risk to our dependency chains.`,
+            `**Speaker Notes: Best Practices**
+To build resilience, we must be proactive. Regularly running \`npm audit\` is a must. Always commit your lockfile. Use tools to audit and understand your dependencies. Be mindful of \`postinstall\` scripts, which can run arbitrary code. Finally, for critical applications, consider using a private registry to insulate from public registry incidents.`
         ];
 
         function showSlide(index) {
