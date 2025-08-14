@@ -50,7 +50,5 @@ Perform Dependency Audits: This goes beyond npm audit to suggest using tools to 
 
 Mind Your Binaries: The presentation highlights the risk of postinstall scripts, which can run arbitrary code on your machine. This practice reminds the team to be aware of what packages might be executing during installation.
 
-Use Private Registries: For projects with mission-critical dependencies, using a private registry provides a layer of isolation from potential incidents or outages in the public npm ecosystem.
-
 Credits
 Created by Alina Boshkov for Lemonade.
