@@ -272,21 +272,20 @@
         const nextBtn = document.getElementById('next-btn');
 
         const speakerNotes = [
-            `**Speaker Notes: Welcome**
-Hello everyone! I'm here to talk about something crucial to our work: dependency management. We often take it for granted, but a deeper understanding is key to building more resilient software. This presentation will cover the fundamentals, some famous incidents, and actionable best practices we can implement as a team.`,
-            `**Speaker Notes: Dependency Tree**
+            `Hello everyone! I'm here to talk about something crucial to our work: dependency management. We often take it for granted, but a deeper understanding is key to building more resilient software. This presentation will cover the fundamentals, some famous incidents, and actionable best practices we can implement as a team.`,
+            `
 When you run \`npm install\`, npm resolves the dependencies listed in our \`package.json\`. It recursively finds every package, creating a large tree. The visual diagram here shows how a single project can pull in multiple dependencies, which in turn have their own dependencies. This complex network is what makes our ecosystem so powerful, but also fragile.`,
-            `**Speaker Notes: Hoisting & Version Conflicts**
+            `
 To optimize for space, npm tries to hoist common packages to the top-level \`node_modules\` folder. This is an important detail for understanding why our project folders look the way they do. However, if two dependencies need different major versions of the same package, npm must nest one of them deeper in the tree, which can lead to complex and sometimes unexpected behavior.`,
-            `**Speaker Notes: package-lock.json**
+            `
 The \`package-lock.json\` file is the most important part of this process. It is a precise blueprint of the entire dependency tree as it was installed. It records the exact version, source URL, and a cryptographic integrity hash for every single package. This guarantees that our builds are reproducible across different machines and environments. **Never forget to commit this file.**`,
-            `**Speaker Notes: left-pad Incident**
+            `
 The \`left-pad\` incident in 2016 is a classic example of our open-source reliance. A developer unpublished a small, 11-line utility package. Because it was a transitive dependency for many major frameworks, thousands of builds worldwide broke. This highlights how a single point of failure can have a massive, global impact.`,
-            `**Speaker Notes: event-stream Attack**
+            `
 The \`event-stream\` attack in 2018 showed a more sinister side of dependency management. A popular package was taken over by a malicious actor who injected a backdoor. The code was highly targeted and designed to steal private keys from a specific Bitcoin wallet. This was a sophisticated supply chain attack that went undetected for months.`,
-            `**Speaker Notes: stylus Incident**
+            `
 The recent \`stylus\` incident from 2025 provides a new lesson. The CSS preprocessor was removed by npm not because it was malicious, but because a contributor was linked to other malicious packages. This emphasizes that a package's stability can be tied to the reputation of its maintainers, adding another layer of risk to our dependency chains.`,
-            `**Speaker Notes: Best Practices**
+            `
 To build resilience, we must be proactive. Regularly running \`npm audit\` is a must. Always commit your lockfile. Use tools to audit and understand your dependencies. Be mindful of \`postinstall\` scripts, which can run arbitrary code. Finally, for critical applications, consider using a private registry to insulate from public registry incidents.`
         ];
 
